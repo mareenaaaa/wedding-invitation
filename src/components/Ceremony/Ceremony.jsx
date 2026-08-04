@@ -29,12 +29,7 @@ export default function Ceremony() {
     });
 
     // Main entrance timeline
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 75%',
-      }
-    });
+    let tl = gsap.timeline({ paused: true });
 
     // Initial Hidden States
     gsap.set(titleRef.current, { opacity: 0, y: -30 });
@@ -93,9 +88,24 @@ export default function Ceremony() {
     // Background Parallax continues, but we don't fade the card out anymore.
     // The details will stay fully visible and full size.
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          tl.play();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
       tl.kill();
+      observer.disconnect();
     };
   }, []);
 
