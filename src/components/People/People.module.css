@@ -1,0 +1,106 @@
+.container {
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.imageContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, var(--color-gold) 0%, transparent 100%);
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+.socials {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.card:hover .socials {
+  bottom: 0;
+  opacity: 1;
+}
+
+.card:hover .imageContainer img {
+  transform: scale(1.1);
+}
+
+.socials a {
+  color: var(--color-gold);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+}
+
+.socials a:hover {
+  background: var(--color-gold);
+  color: var(--color-bg);
+}
+
+.info h3 {
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.role {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-maroon);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.info p {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

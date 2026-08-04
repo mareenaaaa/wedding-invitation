@@ -1,0 +1,117 @@
+.container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.eventCard {
+  padding: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  background: var(--color-surface);
+}
+
+.eventTitle {
+  font-family: var(--font-script);
+  font-size: 3rem;
+  color: var(--color-maroon);
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.titleDecoration {
+  color: var(--color-gold);
+  margin: 0 1rem;
+}
+
+.eventGrid {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.icon {
+  color: var(--color-gold);
+}
+
+.detailText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+.detailTextCenter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-maroon-light);
+}
+
+.dateBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--color-gold);
+  padding: 1rem 2rem;
+  border-radius: 4px;
+}
+
+.day {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-maroon);
+}
+
+.dateNumber {
+  font-size: 3.5rem;
+  font-family: var(--font-serif);
+  color: var(--color-maroon);
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.monthYear {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-maroon);
+}
+
+.divider {
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+  margin: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .eventCard {
+    padding: 2rem 1rem;
+  }
+  .eventTitle {
+    font-size: 2.2rem;
+  }
+  .eventGrid {
+    gap: 2rem;
+    flex-direction: column;
+  }
+}

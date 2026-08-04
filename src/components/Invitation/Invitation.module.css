@@ -1,0 +1,265 @@
+.invitationSection {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Warm ivory background with subtle texture feeling */
+  background-color: #fcfaf2;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c6aa64' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  padding: 4rem 2rem;
+}
+
+.card {
+  max-width: 900px;
+  width: 100%;
+  padding: 5rem 3rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(198, 170, 100, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 15px 40px rgba(90, 42, 39, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Water color corners */
+.floralCornerTopLeft,
+.floralCornerBottomRight {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23c6aa64' opacity='0.3' d='M0,0 C40,0 60,20 100,20 C60,40 40,60 20,100 C20,60 0,40 0,0 Z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.floralCornerTopLeft {
+  top: -20px;
+  left: -20px;
+}
+
+.floralCornerBottomRight {
+  bottom: -20px;
+  right: -20px;
+  transform: rotate(180deg);
+}
+
+/* Top Section */
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.ganeshaIcon {
+  width: 60px;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 4px 10px rgba(198, 170, 100, 0.4));
+}
+
+.parentsTop {
+  font-family: var(--font-serif);
+  color: var(--color-maroon);
+}
+
+.parentsTop h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.parentsTop p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+
+/* Initial hidden state for fade up */
+.fadeUp1, .fadeUp2, .fadeUp3, .fadeUp4, .fadeUp5,
+.fadePara1, .fadePara2 {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Animations Triggered by .visible class */
+.visible .fadeUp1 { animation: fadeUpAnim 0.8s forwards 0.2s; }
+.visible .fadeUp2 { animation: fadeUpAnim 0.8s forwards 0.4s; }
+.visible .fadeUp3 { animation: fadeUpAnim 0.8s forwards 0.6s; }
+.visible .fadeUp4 { animation: fadeUpAnim 0.8s forwards 0.8s; }
+.visible .fadeUp5 { animation: fadeUpAnim 0.8s forwards 1.0s; }
+
+@keyframes fadeUpAnim {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  width: 120px;
+  background: var(--color-gold);
+}
+
+.diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--color-maroon);
+  transform: rotate(45deg);
+  margin: 0 15px;
+}
+
+/* Invite Message */
+.inviteMessageSection {
+  margin-bottom: 4rem;
+}
+
+.inviteText {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.inviteTextSub {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+/* Shimmer Effect for Reception */
+.receptionText {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 4px;
+  margin: 0;
+  background: linear-gradient(to right, var(--color-gold-dark) 20%, var(--color-gold-light) 40%, var(--color-gold-light) 60%, var(--color-gold-dark) 80%);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.visible .receptionText {
+  animation: shimmer 3s linear infinite 1s;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Couple Names Reveal */
+.coupleNamesSection {
+  margin-bottom: 4rem;
+}
+
+.nameWrapper {
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0;
+}
+
+.name {
+  font-family: var(--font-script);
+  font-size: clamp(3.5rem, 8vw, 5rem);
+  color: var(--color-gold-dark);
+  font-weight: 400;
+  margin: 0;
+  /* Gold ink look */
+  background: linear-gradient(135deg, var(--color-gold-dark), var(--color-gold-light));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Initial hidden state for reveal */
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+}
+
+.visible .revealText {
+  animation: revealSwipe 2s cubic-bezier(0.77, 0, 0.175, 1) forwards 1.5s;
+}
+
+@keyframes revealSwipe {
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+/* Sparkles */
+.sparkle1, .sparkle2, .sparkle3, .sparkle4 {
+  position: absolute;
+  font-size: 1.5rem;
+  color: var(--color-gold-light);
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  pointer-events: none;
+}
+
+.sparkle1 { top: 10%; right: -20px; }
+.sparkle2 { bottom: 10%; left: -20px; }
+.sparkle3 { top: 0%; left: 40%; }
+.sparkle4 { bottom: -10%; right: 10%; }
+
+.visible .sparkle1 { animation: popSparkle 1.5s ease-in-out forwards 3.0s; }
+.visible .sparkle2 { animation: popSparkle 1.5s ease-in-out forwards 3.2s; }
+.visible .sparkle3 { animation: popSparkle 1.5s ease-in-out forwards 3.5s; }
+.visible .sparkle4 { animation: popSparkle 1.5s ease-in-out forwards 3.7s; }
+
+@keyframes popSparkle {
+  0% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(45deg); }
+  100% { opacity: 0; transform: scale(0) rotate(90deg); }
+}
+
+.withText {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 1rem 0;
+}
+
+/* Parents Bottom Section */
+.parentsBottomSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.parentsBottomBlock p {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.visible .fadePara1 { animation: fadeUpAnim 1s forwards 4.0s; }
+.visible .fadePara2 { animation: fadeUpAnim 1s forwards 4.5s; }
+
+@media (max-width: 768px) {
+  .card {
+    padding: 3rem 1.5rem;
+  }
+  .receptionText {
+    font-size: 2rem;
+  }
+}

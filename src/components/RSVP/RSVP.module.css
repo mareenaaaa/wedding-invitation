@@ -1,0 +1,145 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formContainer {
+  max-width: 800px;
+  width: 100%;
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: 3rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.row .inputGroup {
+  flex: 1;
+}
+
+.inputGroup {
+  width: 100%;
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--color-bg);
+  border: 1px solid rgba(198, 170, 100, 0.4);
+  border-radius: 4px;
+  color: var(--color-maroon);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-maroon);
+  box-shadow: 0 0 0 2px rgba(90, 42, 39, 0.1);
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23d4af37%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.5rem top 50%;
+  background-size: 0.65rem auto;
+}
+
+.select option {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.loading {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  min-height: 300px;
+}
+
+.successIcon {
+  color: var(--color-gold);
+  animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.successMessage h3 {
+  font-size: 2.5rem;
+  color: var(--color-maroon);
+}
+
+.successMessage p {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .formContainer {
+    padding: 2.5rem 1.5rem;
+  }
+}

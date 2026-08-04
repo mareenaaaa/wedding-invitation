@@ -1,0 +1,118 @@
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 2rem;
+  background-image: radial-gradient(circle at top right, rgba(198, 170, 100, 0.1), transparent 40%),
+                    radial-gradient(circle at bottom left, rgba(198, 170, 100, 0.1), transparent 40%);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.ganesha {
+  margin-bottom: 1rem;
+  color: var(--color-maroon);
+}
+
+.hosts h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-maroon);
+}
+
+.hosts p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.invitationText {
+  margin: 2rem 0;
+  font-family: var(--font-serif);
+}
+
+.invitationText p {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.eventHighlight {
+  font-size: 1.8rem;
+  color: var(--color-maroon);
+  letter-spacing: 3px;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+.beloved {
+  font-family: var(--font-script) !important;
+  font-size: 2rem !important;
+  color: var(--color-text-secondary) !important;
+  text-transform: lowercase;
+}
+
+.coupleNames {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.parentsText {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+  margin-top: -1rem;
+}
+
+.withText {
+  font-family: var(--font-script);
+  font-size: 2.5rem;
+  color: var(--color-gold);
+  margin: 1rem 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-maroon);
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .hosts h3 {
+    font-size: 1.2rem;
+  }
+  .eventHighlight {
+    font-size: 1.4rem;
+  }
+  .parentsText {
+    font-size: 0.8rem;
+  }
+}

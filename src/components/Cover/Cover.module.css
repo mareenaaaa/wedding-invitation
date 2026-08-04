@@ -1,0 +1,173 @@
+.cover {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Move text upwards */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 18vh 2rem 2rem 2rem; /* Push text higher */
+  
+  /* Use the uploaded image as the background */
+  background-image: url('../../assets/hero_bg.jpg');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  /* Hardware acceleration for smooth parallax */
+  transform: translateZ(0); 
+}
+
+.ambientGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(198, 170, 100, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particlesContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  width: 10px;
+  height: 15px;
+  background-color: rgba(230, 130, 150, 0.4); /* soft pinkish petal */
+  border-radius: 50% 0 50% 0;
+  animation: floatPetal linear infinite;
+  filter: blur(1px);
+}
+
+@keyframes floatPetal {
+  0% { transform: translateY(-20px) rotate(0deg) scale(0.8); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg) scale(1.2); opacity: 0; }
+}
+
+.content {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform, opacity;
+}
+
+.names {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+  color: var(--color-maroon);
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(198, 170, 100, 0.3); /* Soft glow */
+}
+
+.andDivider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: 250px;
+}
+
+.line {
+  flex-grow: 1;
+  height: 1px;
+  background-color: var(--color-gold-dark);
+}
+
+.andText {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--color-gold-dark);
+  /* Initial state for clip path reveal */
+  clip-path: polygon(0 0, 0 0, 0 100%, 0% 100%);
+  position: relative;
+}
+
+.andText::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transform: skewX(-20deg);
+  animation: shimmerAnd 3s infinite 2.5s; /* Starts after reveal */
+}
+
+@keyframes shimmerAnd {
+  0%, 100% { left: -100%; }
+  50% { left: 200%; }
+}
+
+.dateText {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  letter-spacing: 6px;
+  color: var(--color-maroon);
+  margin-top: 2rem;
+}
+
+.separator {
+  color: var(--color-gold-dark);
+  margin: 0 0.5rem;
+  font-weight: 300;
+}
+
+.bottomCoupleContainer {
+  position: absolute;
+  bottom: -2%; /* Push couple further down */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.bottomCouple {
+  width: 100%;
+  height: auto;
+  /* Multiply makes the white background transparent against lighter backgrounds */
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  transform: translateZ(0); /* Hardware acceleration */
+  will-change: transform, opacity, scale;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+}
+
+.bottomCouple:hover {
+  transform: scale(1.03); /* Micro interaction */
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .script-text {
+    font-size: 3rem;
+  }
+}

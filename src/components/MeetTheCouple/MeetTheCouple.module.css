@@ -1,0 +1,67 @@
+.meetSection {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: #fcfaf2;
+}
+
+.heading {
+  font-family: var(--font-script);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  color: var(--color-maroon);
+  font-weight: 400;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.photoCard {
+  background: #ffffff;
+  padding: 1rem 1rem 3rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(90, 42, 39, 0.1);
+  border: 1px solid rgba(198, 170, 100, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  mix-blend-mode: multiply;
+  object-fit: cover;
+  margin-bottom: 2rem;
+}
+
+.cardContent {
+  margin-top: 1rem;
+}
+
+.names {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+  .photoCard {
+    max-width: 300px;
+    padding: 0.8rem 0.8rem 2rem 0.8rem;
+  }
+  .names {
+    font-size: 1.5rem;
+  }
+}
