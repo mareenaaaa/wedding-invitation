@@ -93,7 +93,8 @@
 
 /* Title */
 .sectionTitle {
-  font-size: clamp(3.5rem, 8vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  white-space: nowrap;
   color: var(--color-maroon);
   margin-bottom: 4rem;
   text-shadow: 0 5px 15px rgba(198, 170, 100, 0.3);

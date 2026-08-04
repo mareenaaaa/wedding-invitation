@@ -47,6 +47,7 @@ export default function EnvelopeIntro({ onOpenComplete }) {
 
   return (
     <div ref={containerRef} className={styles.introContainer} onClick={handleOpen}>
+      <p className={styles.invitedText}>You are Invited</p>
       <div ref={envelopeRef} className={styles.envelopeWrapper}>
         
         {/* The full envelope image split into top and bottom */}
