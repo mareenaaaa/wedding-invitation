@@ -41,7 +41,6 @@ export default function Reception() {
     });
 
     // Initial Hidden States
-    gsap.set(bgRef.current, { opacity: 0 });
     gsap.set(titleRef.current, { opacity: 0, y: -30 });
     gsap.set(cardsRef.current, { opacity: 0, y: 50, scale: 0.95 });
     gsap.set(iconRefs.current, { opacity: 0, y: -20, scale: 0.5 });
@@ -49,7 +48,7 @@ export default function Reception() {
     if (mapRef.current) gsap.set(mapRef.current, { scale: 0.9, opacity: 0 });
 
     // 1. Background slowly fades in
-    tl.to(bgRef.current, {
+    tl.fromTo(bgRef.current, { opacity: 0.5 }, {
       opacity: 1,
       duration: 2,
       ease: 'power2.inOut'

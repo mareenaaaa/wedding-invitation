@@ -37,14 +37,13 @@ export default function Ceremony() {
     });
 
     // Initial Hidden States
-    gsap.set(bgRef.current, { opacity: 0 });
     gsap.set(titleRef.current, { opacity: 0, y: -30 });
     gsap.set(cardRef.current, { opacity: 0, y: 50, scale: 0.95 });
     gsap.set(iconRefs.current, { opacity: 0, y: -20 });
     gsap.set(textGroupRefs.current, { opacity: 0, y: 20 });
 
-    // 1. Temple slowly fades into view
-    tl.to(bgRef.current, {
+    // 1. Temple slowly fades into view (already visible, maybe just animate brightness or something, or skip)
+    tl.fromTo(bgRef.current, { opacity: 0.5 }, {
       opacity: 1,
       duration: 2,
       ease: 'power2.inOut'

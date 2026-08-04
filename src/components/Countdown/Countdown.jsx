@@ -44,18 +44,16 @@ export default function Countdown() {
       }
     });
 
-    // 1 & 2: Fade in section and stagger boxes upward
-    gsap.set(sectionRef.current, { opacity: 0 });
+    // Fade in elements instead of the whole section to prevent white space bugs on mobile
     gsap.set(boxesRef.current, { y: 50, opacity: 0 });
     
-    tl.to(sectionRef.current, { opacity: 1, duration: 1, ease: 'power3.inOut' })
-      .to(boxesRef.current, { 
+    tl.to(boxesRef.current, { 
         y: 0, 
         opacity: 1, 
         duration: 0.8, 
         stagger: 0.2, 
         ease: 'power3.out' 
-      }, '-=0.5');
+      });
 
     // 3: Rolling flip-clock effect (fast count up)
     const dummyObj = { d: 0, h: 0, m: 0, s: 0 };

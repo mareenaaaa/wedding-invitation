@@ -21,7 +21,10 @@ function App() {
       gsap.to('.main-content', {
         opacity: 1,
         duration: 1.5,
-        ease: 'power2.inOut'
+        ease: 'power2.inOut',
+        onComplete: () => {
+          ScrollTrigger.refresh();
+        }
       });
     }
   }, [isEnvelopeOpen]);
