@@ -21,8 +21,16 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
       if (playPromise !== undefined) {
         playPromise.then(() => {
           setIsPlaying(true);
-          // Fade in
-          gsap.to(audioRef.current, { volume: 1, duration: 2, ease: "power2.inOut" });
+          // Fade in reliably
+          const volObj = { v: 0 };
+          gsap.to(volObj, { 
+            v: 1, 
+            duration: 4, 
+            ease: "power2.inOut",
+            onUpdate: () => {
+              if (audioRef.current) audioRef.current.volume = volObj.v;
+            }
+          });
         }).catch(err => {
           console.log("Autoplay prevented:", err);
           setIsPlaying(false);
@@ -41,12 +49,16 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
 
     if (isPlaying) {
       // Fade out and pause
-      gsap.to(audioRef.current, {
-        volume: 0,
-        duration: 1,
+      const volObj = { v: audioRef.current.volume };
+      gsap.to(volObj, {
+        v: 0,
+        duration: 1.5,
         ease: "power2.inOut",
+        onUpdate: () => {
+          if (audioRef.current) audioRef.current.volume = volObj.v;
+        },
         onComplete: () => {
-          audioRef.current.pause();
+          if (audioRef.current) audioRef.current.pause();
           setIsPlaying(false);
           setIsMuted(true);
         }
@@ -57,7 +69,15 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
       audioRef.current.play().then(() => {
         setIsPlaying(true);
         setIsMuted(false);
-        gsap.to(audioRef.current, { volume: 1, duration: 1, ease: "power2.inOut" });
+        const volObj = { v: 0 };
+        gsap.to(volObj, { 
+          v: 1, 
+          duration: 3, 
+          ease: "power2.inOut",
+          onUpdate: () => {
+            if (audioRef.current) audioRef.current.volume = volObj.v;
+          }
+        });
       }).catch(err => console.log("Play failed:", err));
     }
   };
