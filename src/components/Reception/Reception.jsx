@@ -17,7 +17,7 @@ export default function Reception() {
   const mapRef = useRef(null);
 
   const mapUrl = "https://maps.google.com/maps?q=Paurastya%20Suvishesha%20Samajam,%20Athithi%20Mandhiram%20Convention%20Hall,%20Ayakkadu&t=&z=15&ie=UTF8&iwloc=&output=embed";
-  const mapLink = "https://maps.app.goo.gl/AqMjAkBrMDKAT5qH8";
+  const mapLink = "https://maps.app.goo.gl/JKh2fLrCa3g6mR1dA";
 
   useEffect(() => {
     // Background Parallax
