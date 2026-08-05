@@ -19,11 +19,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.3); /* Gold accent border */
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,26 +31,11 @@
 }
 
 .controlButton::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  display: none;
 }
 
 .controlButton:hover {
-  transform: scale(1.05);
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(212, 175, 55, 0.6);
-  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
-}
-
-.controlButton:hover::before {
-  opacity: 1;
+  transform: scale(1.1);
 }
 
 .controlButton:active {

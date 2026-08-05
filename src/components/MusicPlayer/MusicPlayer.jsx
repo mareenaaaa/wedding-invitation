@@ -24,7 +24,7 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
           // Fade in reliably
           const volObj = { v: 0 };
           gsap.to(volObj, { 
-            v: 1, 
+            v: 0.4, 
             duration: 4, 
             ease: "power2.inOut",
             onUpdate: () => {
@@ -71,8 +71,8 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
         setIsMuted(false);
         const volObj = { v: 0 };
         gsap.to(volObj, { 
-          v: 1, 
-          duration: 3, 
+          v: 0.4, 
+          duration: 2, 
           ease: "power2.inOut",
           onUpdate: () => {
             if (audioRef.current) audioRef.current.volume = volObj.v;
@@ -86,7 +86,7 @@ const MusicPlayer = ({ isEnvelopeOpen }) => {
     <div className={`${styles.musicPlayer} ${isEnvelopeOpen ? styles.visible : ''}`}>
       <audio
         ref={audioRef}
-        src="/bg-music.mp3"
+        src="/bg-music.mp3?v=3"
         preload="metadata"
         loop
       />
