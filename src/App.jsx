@@ -9,6 +9,7 @@ import Countdown from './components/Countdown/Countdown';
 import Reception from './components/Reception/Reception';
 import Ceremony from './components/Ceremony/Ceremony';
 import Closing from './components/Closing/Closing';
+import MusicPlayer from './components/MusicPlayer/MusicPlayer';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,6 +44,8 @@ function App() {
         <Ceremony />
         <Closing />
       </main>
+      
+      <MusicPlayer isEnvelopeOpen={isEnvelopeOpen} />
     </>
   );
 }
