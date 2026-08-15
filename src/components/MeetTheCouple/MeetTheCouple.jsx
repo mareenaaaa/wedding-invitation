@@ -17,34 +17,42 @@ export default function MeetTheCouple() {
   const elementsRef = useRef([]);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.fromTo(titleRef.current,
-        { y: 30, opacity: 0 },
+    let tl = gsap.timeline({ paused: true });
+
+    tl.fromTo(titleRef.current,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
+    );
+
+    elementsRef.current.forEach((el, index) => {
+      const xOffset = index % 2 === 0 ? -150 : 150;
+      tl.fromTo(el,
+        { x: xOffset, opacity: 0 },
         { 
-          y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-          }
-        }
+          x: 0, opacity: 1, duration: 1, ease: 'back.out(1.2)' 
+        },
+        '-=0.6'
       );
+    });
 
-      elementsRef.current.forEach((el, index) => {
-        const xOffset = index % 2 === 0 ? -150 : 150;
-        gsap.fromTo(el,
-          { x: xOffset, opacity: 0 },
-          { 
-            x: 0, opacity: 1, duration: 1, ease: 'back.out(1.2)',
-            scrollTrigger: {
-              trigger: el,
-              start: 'top 85%',
-            }
-          }
-        );
-      });
-    }, sectionRef);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          tl.play();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-    return () => ctx.revert();
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      tl.kill();
+      observer.disconnect();
+    };
   }, []);
 
   return (
