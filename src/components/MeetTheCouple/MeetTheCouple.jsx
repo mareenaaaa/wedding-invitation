@@ -3,55 +3,66 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './MeetTheCouple.module.css';
 
-// Using the provided image for the couple placeholder
-import coupleImg from '../../assets/hero_couple.png';
-
 gsap.registerPlugin(ScrollTrigger);
+
+const coupleImages = [
+  { src: '/images/couple1.jpeg', alt: 'Proposal & Engagement', caption: 'Proposal & Engagement' },
+  { src: '/images/couple2.jpeg', alt: 'Wedding & Elopement', caption: 'Wedding & Elopement' },
+  { src: '/images/couple3.jpeg', alt: 'Editorial & Brand', caption: 'Editorial & Brand' }
+];
 
 export default function MeetTheCouple() {
   const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const cardRef = useRef(null);
+  const titleRef = useRef(null);
+  const elementsRef = useRef([]);
 
   useEffect(() => {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 75%',
-      }
-    });
+    let ctx = gsap.context(() => {
+      gsap.fromTo(titleRef.current,
+        { y: 30, opacity: 0 },
+        { 
+          y: 0, opacity: 1, duration: 0.8, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 70%',
+          }
+        }
+      );
 
-    gsap.set(headingRef.current, { y: 30, opacity: 0 });
-    gsap.set(cardRef.current, { y: 60, opacity: 0 });
+      elementsRef.current.forEach((el, index) => {
+        const xOffset = index % 2 === 0 ? -150 : 150;
+        gsap.fromTo(el,
+          { x: xOffset, opacity: 0 },
+          { 
+            x: 0, opacity: 1, duration: 1, ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+            }
+          }
+        );
+      });
+    }, sectionRef);
 
-    tl.to(headingRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out'
-    })
-    .to(cardRef.current, {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: 'power3.out'
-    }, '-=0.4');
-
-    return () => {
-      tl.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className={`section ${styles.meetSection}`}>
-      <h2 ref={headingRef} className={styles.heading}>Meet the Couple</h2>
+    <section ref={sectionRef} className={styles.container}>
+      <h2 ref={titleRef} className={styles.title}>Meet the Couple</h2>
       
-      <div ref={cardRef} className={styles.photoCard}>
-        <img src={coupleImg} alt="Anandu and Shyba" className={styles.photo} />
-        <div className={styles.cardContent}>
-          <h3 className={styles.names}>Anandu & Shyba</h3>
-          <p className={styles.subtitle}>Together Forever</p>
-        </div>
+      <div className={styles.gallery}>
+        {coupleImages.map((image, index) => (
+          <div 
+            key={index} 
+            className={`${styles.galleryItem} ${index === 1 ? styles.centerItem : ''}`}
+            ref={el => elementsRef.current[index] = el}
+          >
+            <div className={styles.imgWrapper}>
+              <img src={image.src} alt={image.alt} />
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
