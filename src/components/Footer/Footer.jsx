@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaInstagram } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -14,7 +15,11 @@ const Footer = () => {
             rel="noreferrer"
             className={styles.logoLink}
           >
-            <img src="/images/team_photo.jpeg" alt="Meet the Team" className={styles.teamLogo} />
+            <img src="/images/bevate_logo_v2.jpeg" alt="Bevate Events" className={styles.teamLogo} />
+            <div className={styles.instagramWrapper}>
+              <FaInstagram size={20} />
+              <span>@bevate_digital</span>
+            </div>
           </a>
         </div>
 

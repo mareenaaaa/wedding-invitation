@@ -99,12 +99,35 @@
 }
 
 .logoLink {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
   transition: transform 0.3s ease;
 }
 
 .logoLink:hover {
   transform: scale(1.05);
+}
+
+.instagramWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: rgba(198, 170, 100, 0.1);
+  transition: all 0.3s ease;
+}
+
+.logoLink:hover .instagramWrapper {
+  background: var(--color-gold);
+  color: var(--color-bg);
 }
 
 .teamLogo {
